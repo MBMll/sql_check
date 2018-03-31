@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 ">
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.mysql.driver.class}"/>
         <property name="username" value="${jdbc.mysql.driver.username}"/>
         <property name="password" value="${jdbc.mysql.driver.password}"/>
@@ -42,7 +42,7 @@
     </bean>
 
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" value="dataSource"/>
+        <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath*:mapper/*-mapper.xml"/>
         <!-- 分页插件 -->
         <!--<property name="plugins">-->
