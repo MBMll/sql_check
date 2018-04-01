@@ -5,5 +5,4 @@ package com.sql.web;
  */
 
 public class BaseController {
-
 }

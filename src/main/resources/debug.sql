@@ -6,3 +6,6 @@ CREATE TABLE `test` (
   id INT PRIMARY KEY AUTO_INCREMENT
 )
   COMMENT 'test table';
+SELECT *
+FROM test;
+
