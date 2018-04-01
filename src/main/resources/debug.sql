@@ -1,7 +1,8 @@
 CREATE DATABASE IF NOT EXISTS `crm`;
-
+USE crm;
 
 DROP TABLE IF EXISTS `test`;
-CREATE TABLE `test`(
+CREATE TABLE `test` (
   id INT PRIMARY KEY AUTO_INCREMENT
-) COMMENT 'test table';
+)
+  COMMENT 'test table';

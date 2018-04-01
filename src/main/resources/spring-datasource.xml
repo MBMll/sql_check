@@ -41,7 +41,7 @@
         <property name="validationQuery" value="SELECT 1 FROM dual"/>
     </bean>
 
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath*:mapper/*-mapper.xml"/>
         <!-- 分页插件 -->
@@ -59,6 +59,7 @@
     </bean>
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.sql.context.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
     <tx:annotation-driven/>
