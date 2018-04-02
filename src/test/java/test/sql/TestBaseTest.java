@@ -21,4 +21,25 @@ public class TestBaseTest extends BaseTest {
         Assert.assertNotNull(select);
         logger.debug(this.getClass().getCanonicalName(), select);
     }
+
+    @Override
+    public void select() {
+
+    }
+
+    @Override
+    public void insert() {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
+
 }

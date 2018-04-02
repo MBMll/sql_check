@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sql.context.mapper.NotNullColumnMapper">
+    <insert id="insertTableNotNull">
+        INSERT INTO `NotNullColumnMapper` (
+        <foreach collection="columns" item="column" separator=",">
+            ${column.name}
+        </foreach>
+        ) VALUE (
+        <foreach collection="rows" item="row" separator=",">
+            #{row}
+        </foreach>
+        )
+    </insert>
+
+    <update id="createTableNotNull">
+        CREATE TABLE `NotNullColumnMapper`(
+        id INT PRIMARY KEY AUTO_INCREMENT
+        <foreach collection="columns" item="column" open="," separator="," close=",">
+            ${column.name} ${column.type} ${column.isNull}
+        </foreach>
+        create_time TIMESTAMP NOT NULL DEFAULT current_timestamp,
+        update_time TIMESTAMP NOT NULL DEFAULT current_timestamp
+        )
+    </update>
+</mapper>

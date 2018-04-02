@@ -1,5 +1,6 @@
 package test;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //这里的事务关联到配置文件中的事务控制器（transactionManager = "transactionManager"），同时//指定自动回滚（defaultRollback = true）。这样做操作的数据才不会污染数据库！
 //@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 //------------
-public class BaseTest {
+public abstract class BaseTest {
 
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
+
+    @Test
+    public abstract void select();
+
+    @Test
+    public abstract void insert();
+
+    @Test
+    public abstract void update();
+
+    @Test
+    public abstract void delete();
 }

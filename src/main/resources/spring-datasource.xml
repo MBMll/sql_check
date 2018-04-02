@@ -43,7 +43,7 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath*:mapper/*-mapper.xml"/>
+        <property name="mapperLocations" value="classpath*:mapper/*Mapper.xml"/>
         <!-- 分页插件 -->
         <!--<property name="plugins">-->
         <!--<array>-->
@@ -62,5 +62,8 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <tx:annotation-driven/>
 </beans>
