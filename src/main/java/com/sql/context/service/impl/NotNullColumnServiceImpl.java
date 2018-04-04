@@ -29,7 +29,7 @@ public class NotNullColumnServiceImpl implements NotNullColumnService {
     public List<Column> createTableNotNull() {
         ColumnType[] columnTypes = {VARCHAR, INT, TEXT};
         ArrayList<Column> columns = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 20; i++) {
             Column column = new Column();
             column.setName("column_" + i);
             column.setIsNull("NOT NULL");
@@ -60,7 +60,7 @@ public class NotNullColumnServiceImpl implements NotNullColumnService {
             }
         }
         logger.debug("insertTableNotNull start : " + new Date());
-        for (int i = 0; i < 10000 * 1000; i++) {
+        for (int i = 0; i < 10000 * 100; i++) {
             notNullColumnMapper.insertTableNotNull(tableNotNull, list);
         }
         logger.debug("insertTableNotNull end : " + new Date());
