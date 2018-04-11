@@ -15,4 +15,10 @@ public interface NotNullColumnService {
     void createTableNull();
 
     void insertTableNotNull(List<Column> tableNotNull);
+
+    void deleteTableNotNull();
+
+    void dropTableNotNull();
+
+    void selectTableNotNull();
 }

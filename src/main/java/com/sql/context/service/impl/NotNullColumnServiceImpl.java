@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +20,7 @@ import static com.sql.context.bean.ColumnType.*;
 /**
  * Created by xlc on 2018/4/2.
  */
+@Transactional
 @Service("notNullColumnService")
 public class NotNullColumnServiceImpl implements NotNullColumnService {
     @Autowired
@@ -29,7 +31,7 @@ public class NotNullColumnServiceImpl implements NotNullColumnService {
     public List<Column> createTableNotNull() {
         ColumnType[] columnTypes = {VARCHAR, INT, TEXT};
         ArrayList<Column> columns = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             Column column = new Column();
             column.setName("column_" + i);
             column.setIsNull("NOT NULL");
@@ -60,9 +62,27 @@ public class NotNullColumnServiceImpl implements NotNullColumnService {
             }
         }
         logger.debug("insertTableNotNull start : " + new Date());
-        for (int i = 0; i < 10000 * 100; i++) {
-            notNullColumnMapper.insertTableNotNull(tableNotNull, list);
+        List<List> rows = new ArrayList<>();
+
+        for (int j = 0; j < 1000; j++) {
+            rows.add(list);
         }
+        notNullColumnMapper.insertTableNotNull(tableNotNull, rows);
         logger.debug("insertTableNotNull end : " + new Date());
+    }
+
+    @Override
+    public void deleteTableNotNull() {
+        notNullColumnMapper.deleteTableNotNull();
+    }
+
+    @Override
+    public void dropTableNotNull() {
+        notNullColumnMapper.dropTableNotNull();
+    }
+
+    @Override
+    public void selectTableNotNull() {
+
     }
 }

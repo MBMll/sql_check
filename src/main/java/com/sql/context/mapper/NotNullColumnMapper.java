@@ -13,5 +13,9 @@ public interface NotNullColumnMapper {
     void createTableNotNull(@Param("columns") ArrayList<Column> columns);
 
     void insertTableNotNull(@Param("columns") List columns,
-                            @Param("rows") List rows);
+                            @Param("rows") List<List> rows);
+
+    void deleteTableNotNull();
+
+    void dropTableNotNull();
 }
